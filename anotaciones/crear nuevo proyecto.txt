@@ -1,0 +1,25 @@
+desde la terminal de laragon:
+composer create-project --prefer-dist laravel/laravel nombre-del-proyecto
+
+renombrar archivo .env.example:
+cd nombre-del-proyecto
+copy .env.example .env
+
+ejemplo .env:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nombre_de_tu_base_de_datos
+DB_USERNAME=root
+DB_PASSWORD=
+
+Generar clave unica:
+php artisan key:generate
+
+Para recuperar dependencias faltantes:
+composer install
+y si aplica:
+npm install
+
+Para ejecutar la aplicacion desde terminal de laragon:
+php artisan serve
