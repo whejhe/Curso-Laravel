@@ -1,0 +1,234 @@
+1. Validar un correo electrónico
+
+$regex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+
+    Uso: Verifica si una cadena es un correo electrónico válido.
+
+    Explicación:
+
+        ^: Inicio de la cadena.
+
+        [a-zA-Z0-9._%+-]+: Caracteres permitidos antes del @.
+
+        @: El símbolo @ es obligatorio.
+
+        [a-zA-Z0-9.-]+: Dominio del correo.
+
+        \.: Un punto antes del dominio de nivel superior.
+
+        [a-zA-Z]{2,}: Dominio de nivel superior (mínimo 2 caracteres).
+
+        $: Fin de la cadena.
+
+--------------------------------------------------------------------------
+
+2. Validar una contraseña segura
+
+$regex = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+
+    Uso: Verifica si una contraseña tiene al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales.
+
+    Explicación:
+
+        (?=.*[A-Z]): Al menos una mayúscula.
+
+        (?=.*[a-z]): Al menos una minúscula.
+
+        (?=.*\d): Al menos un número.
+
+        (?=.*[\W_]): Al menos un carácter especial.
+
+        .{8,}: Mínimo 8 caracteres en total.
+
+-------------------------------------------------------------------------------
+
+3. Validar un número de teléfono
+
+$regex = '/^\+?\d{1,4}?[-.\s]?\(?\d{1,4}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/';
+
+    Uso: Valida un número de teléfono con formato internacional.
+
+    Explicación:
+
+        ^\+?: Opcionalmente, un signo + al inicio.
+
+        \d{1,4}: Código de país (1 a 4 dígitos).
+
+        [-.\s]?: Separadores opcionales (-, . o espacio).
+
+        \(?\d{1,4}?\)?: Código de área opcional entre paréntesis.
+
+        \d{1,9}: Número de teléfono (hasta 9 dígitos).
+
+-----------------------------------------------------------------------------
+4. Validar una URL
+
+$regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+
+    Uso: Verifica si una cadena es una URL válida.
+
+    Explicación:
+
+        ^(https?:\/\/)?: Opcionalmente, http:// o https://.
+
+        ([\da-z\.-]+): Dominio (letras, números, puntos y guiones).
+
+        \.([a-z\.]{2,6}): Dominio de nivel superior (2 a 6 caracteres).
+
+        ([\/\w \.-]*)*: Ruta opcional (puede incluir /, letras, números, puntos y guiones).
+
+        \/?$: Opcionalmente, una barra al final.
+
+-------------------------------------------------------------------------
+
+5. Validar una fecha (formato YYYY-MM-DD)
+
+$regex = '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/';
+
+    Uso: Verifica si una cadena es una fecha válida en formato YYYY-MM-DD.
+
+    Explicación:
+
+        ^\d{4}: Año (4 dígitos).
+
+        -(0[1-9]|1[0-2]): Mes (01-12).
+
+        -(0[1-9]|[12][0-9]|3[01])$: Día (01-31).
+
+---------------------------------------------------------------------------
+6. Validar un nombre de usuario
+
+$regex = '/^[a-zA-Z0-9_]{3,16}$/';
+
+    Uso: Verifica si un nombre de usuario tiene entre 3 y 16 caracteres, y solo contiene letras, números y guiones bajos.
+
+    Explicación:
+
+        ^[a-zA-Z0-9_]: Solo letras, números y guiones bajos.
+
+        {3,16}: Longitud entre 3 y 16 caracteres.
+
+------------------------------------------------------------------------
+7. Extraer números de una cadena
+
+$regex = '/\d+/';
+
+    Uso: Encuentra todos los números en una cadena.
+
+    Explicación:
+
+        \d+: Uno o más dígitos.
+------------------------------------------------------------------------------
+8. Validar un código postal (ejemplo para España)
+
+$regex = '/^\d{5}$/';
+
+    Uso: Verifica si una cadena es un código postal válido de 5 dígitos (formato español).
+
+    Explicación:
+
+        ^\d{5}$: Exactamente 5 dígitos.
+-----------------------------------------------------------------------
+9. Validar una tarjeta de crédito (Visa o Mastercard)
+
+$regex = '/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/';
+
+    Uso: Verifica si una cadena es un número de tarjeta Visa o Mastercard válido.
+
+    Explicación:
+
+        4[0-9]{12}(?:[0-9]{3})?: Tarjetas Visa (16 dígitos o 13 dígitos).
+
+        5[1-5][0-9]{14}: Tarjetas Mastercard (16 dígitos).
+-----------------------------------------------------------------------
+
+10. Validar una dirección IP
+
+$regex = '/^(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?){3}$/';
+
+    Uso: Verifica si una cadena es una dirección IPv4 válida.
+
+    Explicación:
+
+        25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?: Número entre 0 y 255.
+
+        \.: Punto separador.
+
+        {3}: Repetido 3 veces para los 4 octetos.
+---------------------------------------------------------------------------
+11. Validar un nombre completo
+
+$regex = '/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{2,}$/';
+
+    Uso: Verifica si una cadena es un nombre completo válido (permite acentos y espacios).
+
+    Explicación:
+
+        [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]: Letras, acentos, ñ y espacios.
+
+        {2,}: Mínimo 2 caracteres.
+-------------------------------------------------------------------------
+2. Validar un número hexadecimal
+
+$regex = '/^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/';
+
+    Uso: Verifica si una cadena es un código de color hexadecimal válido.
+
+    Explicación:
+
+        #?: Opcionalmente, un símbolo #.
+
+        [a-fA-F0-9]{6}: 6 caracteres hexadecimales.
+
+        [a-fA-F0-9]{3}: 3 caracteres hexadecimales.
+---------------------------------------------------------------------------
+13. Validar un nombre de archivo con extensión
+
+$regex = '/^[a-zA-Z0-9_\-\s]+\.[a-zA-Z]{2,4}$/';
+
+    Uso: Verifica si una cadena es un nombre de archivo válido con extensión.
+
+    Explicación:
+
+        [a-zA-Z0-9_\-\s]+: Nombre del archivo (letras, números, guiones, guiones bajos y espacios).
+
+        \.: Punto antes de la extensión.
+
+        [a-zA-Z]{2,4}$: Extensión de 2 a 4 caracteres.
+-------------------------------------------------------------------------------
+14. Validar un número de DNI (España)
+
+$regex = '/^\d{8}[A-Za-z]$/';
+
+    Uso: Verifica si una cadena es un número de DNI español válido.
+
+    Explicación:
+
+        ^\d{8}: 8 dígitos.
+
+        [A-Za-z]$: Una letra al final.
+---------------------------------------------------------------------
+15. Validar un número de cuenta bancaria (IBAN)
+
+$regex = '/^[A-Z]{2}\d{2}[A-Z0-9]{4}\d{10}$/';
+
+    Uso: Verifica si una cadena es un número de cuenta bancaria (IBAN) válido.
+
+    Explicación:
+
+        ^[A-Z]{2}: Código de país (2 letras).
+
+        \d{2}: Dígitos de control.
+
+        [A-Z0-9]{4}: Código de entidad.
+
+        \d{10}$: Número de cuenta.
+----------------------------------------------------------------------------
+Cómo usar estas expresiones regulares en PHP
+
+Puedes usar las expresiones regulares con la función preg_match:
+if (preg_match($regex, $cadena)) {
+    echo "La cadena es válida.";
+} else {
+    echo "La cadena no es válida.";
+}
